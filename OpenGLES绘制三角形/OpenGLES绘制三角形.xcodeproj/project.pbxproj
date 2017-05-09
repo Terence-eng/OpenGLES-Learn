@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7805DF71EC0093D00C4FDC8 /* SquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7805DF61EC0093D00C4FDC8 /* SquareViewController.m */; };
 		A79BFACD1EBDAC9D002906D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A79BFACC1EBDAC9D002906D3 /* main.m */; };
 		A79BFAD01EBDAC9D002906D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A79BFACF1EBDAC9D002906D3 /* AppDelegate.m */; };
 		A79BFAD31EBDAC9D002906D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A79BFAD21EBDAC9D002906D3 /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		A79BFADB1EBDAC9E002906D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A79BFAD91EBDAC9E002906D3 /* LaunchScreen.storyboard */; };
 		A79BFAE61EBDAC9E002906D3 /* OpenGLES_____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A79BFAE51EBDAC9E002906D3 /* OpenGLES_____Tests.m */; };
 		A79BFAF11EBDAC9E002906D3 /* OpenGLES_____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A79BFAF01EBDAC9E002906D3 /* OpenGLES_____UITests.m */; };
+		A7FD25A31EC19CF100D5916F /* LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD25A21EC19CF100D5916F /* LineViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7805DF51EC0093D00C4FDC8 /* SquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareViewController.h; sourceTree = "<group>"; };
+		A7805DF61EC0093D00C4FDC8 /* SquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareViewController.m; sourceTree = "<group>"; };
 		A79BFAC81EBDAC9D002906D3 /* OpenGLES绘制三角形.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGLES绘制三角形.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79BFACC1EBDAC9D002906D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A79BFACE1EBDAC9D002906D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		A79BFAEC1EBDAC9E002906D3 /* OpenGLES绘制三角形UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OpenGLES绘制三角形UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79BFAF01EBDAC9E002906D3 /* OpenGLES_____UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OpenGLES_____UITests.m"; sourceTree = "<group>"; };
 		A79BFAF21EBDAC9E002906D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7FD25A11EC19CF000D5916F /* LineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineViewController.h; sourceTree = "<group>"; };
+		A7FD25A21EC19CF100D5916F /* LineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7805DF31EC008BA00C4FDC8 /* 三角形 */ = {
+			isa = PBXGroup;
+			children = (
+				A79BFAD11EBDAC9D002906D3 /* ViewController.h */,
+				A79BFAD21EBDAC9D002906D3 /* ViewController.m */,
+			);
+			name = "三角形";
+			sourceTree = "<group>";
+		};
+		A7805DF41EC008C800C4FDC8 /* 正方形 */ = {
+			isa = PBXGroup;
+			children = (
+				A7805DF51EC0093D00C4FDC8 /* SquareViewController.h */,
+				A7805DF61EC0093D00C4FDC8 /* SquareViewController.m */,
+			);
+			name = "正方形";
+			sourceTree = "<group>";
+		};
 		A79BFABF1EBDAC9D002906D3 = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +125,11 @@
 		A79BFACA1EBDAC9D002906D3 /* OpenGLES绘制三角形 */ = {
 			isa = PBXGroup;
 			children = (
+				A7FD25A01EC19CCF00D5916F /* 线段 */,
+				A7805DF41EC008C800C4FDC8 /* 正方形 */,
+				A7805DF31EC008BA00C4FDC8 /* 三角形 */,
 				A79BFACE1EBDAC9D002906D3 /* AppDelegate.h */,
 				A79BFACF1EBDAC9D002906D3 /* AppDelegate.m */,
-				A79BFAD11EBDAC9D002906D3 /* ViewController.h */,
-				A79BFAD21EBDAC9D002906D3 /* ViewController.m */,
 				A79BFAD41EBDAC9E002906D3 /* Main.storyboard */,
 				A79BFAD71EBDAC9E002906D3 /* Assets.xcassets */,
 				A79BFAD91EBDAC9E002906D3 /* LaunchScreen.storyboard */,
@@ -138,6 +163,15 @@
 				A79BFAF21EBDAC9E002906D3 /* Info.plist */,
 			);
 			path = "OpenGLES绘制三角形UITests";
+			sourceTree = "<group>";
+		};
+		A7FD25A01EC19CCF00D5916F /* 线段 */ = {
+			isa = PBXGroup;
+			children = (
+				A7FD25A11EC19CF000D5916F /* LineViewController.h */,
+				A7FD25A21EC19CF100D5916F /* LineViewController.m */,
+			);
+			name = "线段";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +311,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79BFAD31EBDAC9D002906D3 /* ViewController.m in Sources */,
+				A7FD25A31EC19CF100D5916F /* LineViewController.m in Sources */,
+				A7805DF71EC0093D00C4FDC8 /* SquareViewController.m in Sources */,
 				A79BFAD01EBDAC9D002906D3 /* AppDelegate.m in Sources */,
 				A79BFACD1EBDAC9D002906D3 /* main.m in Sources */,
 			);
@@ -431,7 +467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3823CPSR4J;
 				INFOPLIST_FILE = "OpenGLES绘制三角形/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "---.OpenGLES-----";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,7 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3823CPSR4J;
 				INFOPLIST_FILE = "OpenGLES绘制三角形/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "---.OpenGLES-----";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -520,6 +556,7 @@
 				A79BFAF71EBDAC9E002906D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A79BFAF81EBDAC9E002906D3 /* Build configuration list for PBXNativeTarget "OpenGLES绘制三角形Tests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +565,7 @@
 				A79BFAFA1EBDAC9E002906D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A79BFAFB1EBDAC9E002906D3 /* Build configuration list for PBXNativeTarget "OpenGLES绘制三角形UITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +574,7 @@
 				A79BFAFD1EBDAC9E002906D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

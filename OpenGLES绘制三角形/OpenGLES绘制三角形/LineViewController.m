@@ -1,39 +1,40 @@
 //
-//  ViewController.m
+//  LineViewController.m
 //  OpenGLES绘制三角形
 //
-//  Created by 陈伟鑫 on 2017/5/6.
+//  Created by 陈伟鑫 on 2017/5/8.
 //  Copyright © 2017年 陈伟鑫. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LineViewController.h"
 
-/**
- VBO： 显卡存储空间里的一块缓存区(Buffer)，用于记录顶点的信息，包括法线，问路坐标等，这个Buffer有它的名字(VBO的ID)，OpenGL在GPU的某处记录着这个ID和对应的显存地址（或者地址偏移，类似内存）。
- */
-@interface ViewController ()
-{
-    GLuint _vertexBufferID; //创建一个顶点缓存对象标识 Vertex Buffer Object（VBO）
-}
-@property (nonatomic, strong) GLKBaseEffect *baseEffect;
-
-@end
-
-@implementation ViewController
 typedef struct {
     GLKVector3 positionCoords;
-}TriangleScence;
+}LinesScence;
 
-//顶点数据数据
-static const TriangleScence vertexs[] =
-{
-    {{-0.5f, -0.5f, 0.0f}}, //左下
-    {{0.5f, -0.5f, 0.0f}},  //右下
-    {{0.0f, 0.5f, 0.0f}},   //中上
+static const LinesScence vertexs[] = {
+    {{-1.0f,-1.0f,0.0f}},
+    {{1.0f,1.0f,0.0f}},
+    {{0.5f,0.0f,0.0f}},
 };
 
+@interface LineViewController ()
+{
+    GLuint _vertexBufferID; //创建一个顶点缓存对象标识 Vertex Buffer Object（VBO）
+    
+    GLenum _currentMode;
+}
+
+@property (nonatomic, strong) GLKBaseEffect *baseEffect;
+@end
+
+@implementation LineViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+    _currentMode = GL_LINES;
     
     GLKView *view = (GLKView *)self.view;
     // 设置view的上下文
@@ -46,10 +47,8 @@ static const TriangleScence vertexs[] =
     // 一个开关
     self.baseEffect.useConstantColor = GL_TRUE;
     // 设置三角形颜色
-    self.baseEffect.constantColor = GLKVector4Make(0.5f, 0.5f, 1.0f, 1.0f);
-    
-    
-    
+    self.baseEffect.constantColor = GLKVector4Make(1.0f, 1.0f, 1.0f, 1.0f);
+
     /**
      第一个参数：指定要生成的缓存标识符的数量
      第二个参数：是一个指针，指向生成的标识符的内存保存位置
@@ -57,11 +56,11 @@ static const TriangleScence vertexs[] =
     glGenBuffers(1, &_vertexBufferID);
     
     /**
-    第一个参数：用于指定要绑定哪一种类型的缓存。glBindBuffer只支持两种类型的缓存，GL_ARRAY_BUFFER 和 GL_ELEMENT_ARRAY_BUFFER，
+     第一个参数：用于指定要绑定哪一种类型的缓存。glBindBuffer只支持两种类型的缓存，GL_ARRAY_BUFFER 和 GL_ELEMENT_ARRAY_BUFFER，
      GL_ARRAY_BUFFER用来指定一个顶点属性数组
      GL_ELEMENT_ARRAY_BUFFER 用例指定一个真实数据的一个索引。是索引
-    第二个参数：绑定的缓存的标识符
-    */
+     第二个参数：绑定的缓存的标识符
+     */
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferID);
     
     /**
@@ -76,19 +75,6 @@ static const TriangleScence vertexs[] =
      */
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexs), vertexs, GL_STATIC_DRAW);
     
-    
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-    // 告诉baseEffect 准备好当前OpenGL ES 的上下文，以便为使用baseEffect生成的属性和Shading Language程序的绘图做好准备
-    [self.baseEffect prepareToDraw];
-    
-    // 设置清屏颜色黑色，意思就是设置当前上下文的背景颜色
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
     // 启动顶点缓存渲染操作
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     
@@ -101,8 +87,18 @@ static const TriangleScence vertexs[] =
      第五个参数：指定每个顶点的保存需要多少个字节
      第六个参数：为NULL告诉OpenGL ES可以从当前绑定的顶点缓存的开始位置访问顶点数据
      */
+    
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(LinesScence), NULL);
 
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(TriangleScence), NULL);
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect  {
+    [self.baseEffect prepareToDraw];
+    
+    // 设置清屏颜色黑色，意思就是设置当前上下文的背景颜色
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
     
     /*
      通过调用glDrawArrays（）来执行绘图
@@ -110,10 +106,9 @@ static const TriangleScence vertexs[] =
      第二个参数：缓存内需要渲染的第一个顶点的位置
      第三个参数：需要渲染的顶点的数量
      */
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
-    
+    int num = sizeof(vertexs) / sizeof(LinesScence);
+    glDrawArrays(_currentMode, 0, num);
 }
-
 - (void)viewDidDisappear:(BOOL)animated {
     if (_vertexBufferID != 0) {
         glDeleteBuffers(1, &_vertexBufferID);
@@ -121,6 +116,15 @@ static const TriangleScence vertexs[] =
     }
     ((GLKView *)self.view).context = nil;
     [EAGLContext setCurrentContext:nil];
+}
+- (IBAction)lineClick:(id)sender {
+    _currentMode = GL_LINES;
+}
+- (IBAction)loopClick:(id)sender {
+    _currentMode = GL_LINE_LOOP;
+}
+- (IBAction)stripClick:(id)sender {
+    _currentMode = GL_LINE_STRIP;
 }
 
 - (void)dealloc {
